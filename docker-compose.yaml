@@ -1,0 +1,66 @@
+services:
+  dd-extension-lgtm:
+    image: ${DESKTOP_PLUGIN_IMAGE}
+
+  loki:
+    image: cedricziel/dd-extension-lgtm-loki
+    ports:
+      - 3100:3100
+    command: -config.file=/etc/loki/local-config.yaml
+    environment:
+      - JAEGER_AGENT_HOST=otelcol
+
+  grafana:
+    image: cedricziel/dd-extension-lgtm-grafana
+    container_name: dd-grafana
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS=otelcol:4317
+      - GF_TRACING_OPENTELEMETRY_OTLP_PROPAGATION=w3c
+    depends_on:
+      - loki
+      - tempo
+      - mimir
+
+  tempo:
+    image: cedricziel/dd-extension-lgtm-tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    ports:
+      - "3200:3200"   # tempo
+
+  mimir:
+    image: cedricziel/dd-extension-lgtm-mimir
+    container_name: dd-mimir
+    restart: unless-stopped
+    ports:
+      - 9009:9009
+    command: --config.file=/etc/mimir/demo.yaml
+
+  ## Tools
+  promtail:
+    image: grafana/promtail:2.5.0
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/config.yml
+
+  otelcol:
+    image: cedricziel/dd-extension-lgtm-otelcol
+    container_name: dd-otelcol
+    restart: unless-stopped
+    ports:
+      - "14268:14268"  # jaeger ingest
+      - "4317:4317"  # otlp grpc
+      - "4318:4318"  # otlp http
+      - "9411:9411"   # zipkin
+    command: --config=/etc/otelcol/config.yaml
+    depends_on:
+      - loki
+      - tempo
+      - mimir
+      - grafana
