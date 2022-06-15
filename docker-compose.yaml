@@ -4,8 +4,6 @@ services:
 
   loki:
     image: cedricziel/dd-extension-lgtm-loki
-    ports:
-      - 3100:3100
     command: -config.file=/etc/loki/local-config.yaml
     environment:
       - JAEGER_AGENT_HOST=otelcol
@@ -31,15 +29,11 @@ services:
   tempo:
     image: cedricziel/dd-extension-lgtm-tempo
     command: [ "-config.file=/etc/tempo.yaml" ]
-    ports:
-      - "3200:3200"   # tempo
 
   mimir:
     image: cedricziel/dd-extension-lgtm-mimir
     container_name: dd-mimir
     restart: unless-stopped
-    ports:
-      - 9009:9009
     command: --config.file=/etc/mimir/demo.yaml
 
   ## Tools
@@ -64,3 +58,5 @@ services:
       - tempo
       - mimir
       - grafana
+    volumes:
+      - /var/run/docker.sock.raw:/var/run/docker.sock

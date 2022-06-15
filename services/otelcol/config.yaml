@@ -1,4 +1,5 @@
 receivers:
+  docker_stats:
   otlp:
     protocols:
       grpc:
@@ -11,8 +12,6 @@ receivers:
       load:
       memory:
       network:
-      process:
-      processes:
   jaeger:
     protocols:
       grpc:
@@ -68,7 +67,7 @@ service:
       processors: [batch]
       exporters: [otlp/tempo]
     metrics:
-      receivers: [hostmetrics,opencensus,otlp]
+      receivers: [hostmetrics,docker_stats,opencensus,otlp]
       processors: [batch]
       exporters: [prometheusremotewrite]
     logs:

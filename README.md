@@ -31,6 +31,16 @@ The data is currently stored in the respective containers.
 
 You can uninstall and re-install the extension.
 
+3. How to ingest data?
+
+This PoC is optimized for OpenTelemetry ingress via OTLP. This means you should be able
+to ingest data by setting `OTEL_EXPORTER_OTLP_ENDPOINT` on the observed and instrumented process.
+
+The value of `OTEL_EXPORTER_OTLP_ENDPOINT` would be depending on your network setup, but in essence,
+you point it to your local docker host.
+
+Format is as follows: `OTEL_EXPORTER_OTLP_ENDPOINT=host.docker.internal:4317`
+
 ## License
 
 MIT
