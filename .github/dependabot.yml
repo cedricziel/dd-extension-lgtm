@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/services/grafana"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/services/loki"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/services/mimir"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/services/otelcol"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker"
+    directory: "/services/tempo"
+    schedule:
+      interval: "daily"
