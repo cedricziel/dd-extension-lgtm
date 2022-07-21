@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the stack
-      run: docker-compose -f docker-compose.yaml -f docker-compose.extension.yaml up -d
+      run: docker-compose -f docker-compose.yaml -f docker-compose.extension.yaml build
