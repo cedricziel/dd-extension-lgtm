@@ -1,7 +1,4 @@
 services:
-  dd-extension-lgtm:
-    image: ${DESKTOP_PLUGIN_IMAGE}
-
   loki:
     image: cedricziel/dd-extension-lgtm-loki:dev
     command: -config.file=/etc/loki/local-config.yaml
