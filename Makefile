@@ -25,6 +25,9 @@ build-extension: ## Build service image to be deployed as a desktop extension
 install-extension: build-extension ## Install the extension
 	docker extension install $(IMAGE):$(TAG)
 
+uninstall-extension: ## Remove the extension
+	docker extension uninstall $(IMAGE):$(TAG)
+
 update-extension: build-extension ## Update the extension
 	docker extension update $(IMAGE):$(TAG)
 
