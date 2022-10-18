@@ -38,6 +38,6 @@
     ]
   },
   "devDependencies": {
-    "@docker/extension-api-client-types": "^0.2.3"
+    "@docker/extension-api-client-types": "^0.3.0"
   }
 }
