@@ -3,9 +3,13 @@
 This repository contains a docker desktop extension to embed the LGTM stack
 into Docker Desktop (DD).
 
+To install the development state, use:
+
 ```bash
 docker extension install cedricziel/dd-extension-lgtm:dev
 ```
+
+Please look at [individual releases](https://github.com/cedricziel/dd-extension-lgtm/releases) to learn how to install a specific version.
 
 **NOTE:** This project is not affiliated with Grafana Labs.
 
