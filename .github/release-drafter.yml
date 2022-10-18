@@ -1,12 +1,12 @@
-name-template: 'v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION'
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 template: |
   ## Installation
   
   To install this version, use the following command:
   ```shell
-  docker extension install cedricziel/dd-extension-lgtm:v$RESOLVED_VERSION
+  docker extension install cedricziel/dd-extension-lgtm:$RESOLVED_VERSION
   ```
   
   ## Changes
