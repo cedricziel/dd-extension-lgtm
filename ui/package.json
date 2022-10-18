@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@docker/docker-mui-theme": "^0.0.4",
-    "@docker/extension-api-client": "^0.2.3",
+    "@docker/extension-api-client": "^0.3.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.6.1",
