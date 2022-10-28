@@ -5,7 +5,7 @@
   "dependencies": {
     "@docker/docker-mui-theme": "^0.0.9",
     "@docker/extension-api-client": "^0.3.0",
-    "@emotion/react": "^11.10.4",
+    "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.10",
     "cra-template": "1.2.0",
