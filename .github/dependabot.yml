@@ -4,23 +4,35 @@ updates:
     directory: "/services/grafana"
     schedule:
       interval: "daily"
+    assignees:
+    - cedricziel
   - package-ecosystem: "docker"
     directory: "/services/loki"
     schedule:
       interval: "daily"
+    assignees:
+    - cedricziel
   - package-ecosystem: "docker"
     directory: "/services/mimir"
     schedule:
       interval: "daily"
+    assignees:
+    - cedricziel
   - package-ecosystem: "docker"
     directory: "/services/otelcol"
     schedule:
       interval: "daily"
+    assignees:
+    - cedricziel
   - package-ecosystem: "docker"
     directory: "/services/tempo"
     schedule:
       interval: "daily"
+    assignees:
+    - cedricziel
   - package-ecosystem: 'npm'
     directory: '/ui'
     schedule:
       interval: 'daily'
+    assignees:
+    - cedricziel
