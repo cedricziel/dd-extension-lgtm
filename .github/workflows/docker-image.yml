@@ -17,4 +17,4 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
     - name: Build the stack
-      run: docker-compose -f docker-compose.yaml -f docker-compose.extension.yaml build
+      run: docker compose -f docker-compose.yaml -f docker-compose.extension.yaml build
